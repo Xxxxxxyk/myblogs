@@ -22,6 +22,6 @@ def index():
 def login():
 	form = LoginForm()
 	if form.validate_on_submit():
-		flash('Login requested for OpenID="' + form.openid.data + '",remember_me' + str(form.remember_me.data))
-		return redirect('/index')
-	return render_template('login.html',title = '登录' , form = form , providers = app.config['OPENID_PROVIDERS'])
+		flash('当前登录用户:' + form.openid.data)
+		return redirect('index')
+	return render_template('login.html',title = '登录失败'  , form = form , providers = app.config['OPENID_PROVIDERS'])
